@@ -1,0 +1,35 @@
+@use "provider";
+@use "tokens";
+
+$theme-map: (
+	--bg-body: (
+		property: background-color,
+		light: tokens.$gray-50,
+		dark: tokens.$gray-900,
+	),
+	--bg-card: (
+		property: background-color,
+		light: tokens.$white,
+		dark: tokens.$gray-900,
+	),
+	--shadow-card: (
+		// prettier-ignore
+		property: box-shadow,
+		light: (0 0 0 1px hsla(0, 0%, 0%, 0.1), var(--shadow-md)),
+		dark: 0 0 0 1px hsla(0, 0%, 100%, 0.1),
+	),
+	--text-body: (
+		property: color,
+		light: tokens.$gray-800,
+		dark: tokens.$gray-300,
+	),
+	--text-gray: (
+		property: color,
+		light: tokens.$gray-600,
+		dark: tokens.$gray-400,
+	),
+);
+
+html {
+	@include provider.theme($theme-map, 300ms, tokens.$ease-out);
+}
