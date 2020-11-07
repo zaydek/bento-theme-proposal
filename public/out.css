@@ -1,18 +1,14 @@
 html {
   --bg-body: white;
-  --bg-card: white;
-  --shadow-card: 0 0 0 1px rgba(0, 0, 0, 0.1);
-  --text-body: #27272a;
-  --text-gray: #52525b;
-  --theme-transition: 250ms background-color cubic-bezier(0, 0, 0.2, 1), 250ms box-shadow cubic-bezier(0, 0, 0.2, 1), 250ms color cubic-bezier(0, 0, 0.2, 1);
+  --bg-important: #94a3b8;
+  --bg-less-important: #cbd5e1;
+  --theme-transition: 300ms background-color cubic-bezier(0, 0, 0.2, 1);
 }
 
 [data-theme=dark] {
-  --bg-body: #18181b;
-  --bg-card: #27272a;
-  --shadow-card: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-  --text-body: #d4d4d8;
-  --text-gray: #a1a1aa;
+  --bg-body: #0f172a;
+  --bg-important: #475569;
+  --bg-less-important: #334155;
 }
 
 .theme\:bg-body {
@@ -20,22 +16,12 @@ html {
   transition: var(--theme-transition);
 }
 
-.theme\:bg-card {
-  background-color: var(--bg-card);
+.theme\:bg-important {
+  background-color: var(--bg-important);
   transition: var(--theme-transition);
 }
 
-.theme\:shadow-card {
-  box-shadow: var(--shadow-card);
-  transition: var(--theme-transition);
-}
-
-.theme\:text-body {
-  color: var(--text-body);
-  transition: var(--theme-transition);
-}
-
-.theme\:text-gray {
-  color: var(--text-gray);
+.theme\:bg-less-important {
+  background-color: var(--bg-less-important);
   transition: var(--theme-transition);
 }

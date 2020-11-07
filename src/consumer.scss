@@ -2,35 +2,25 @@
 @use "tokens";
 
 // TODO: Add support for pseudo elements? What about group elements?
+// What if we just generate psuedo elements and maybe even group elements?
 $theme-map: (
 	--bg-body: (
 		property: background-color,
 		light: tokens.$white,
-		dark: tokens.$gray-900,
+		dark: tokens.$blue-gray-900,
 	),
-	--bg-card: (
+	--bg-important: (
 		property: background-color,
-		light: tokens.$white,
-		dark: tokens.$gray-800,
+		light: tokens.$blue-gray-400,
+		dark: tokens.$blue-gray-600,
 	),
-	--shadow-card: (
-		// prettier-ignore
-		property: box-shadow,
-		light: 0 0 0 1px hsla(0, 0%, 0%, 0.1),
-		dark: inset 0 0 0 1px hsla(0, 0%, 100%, 0.1),
-	),
-	--text-body: (
-		property: color,
-		light: tokens.$gray-800,
-		dark: tokens.$gray-300,
-	),
-	--text-gray: (
-		property: color,
-		light: tokens.$gray-600,
-		dark: tokens.$gray-400,
+	--bg-less-important: (
+		property: background-color,
+		light: tokens.$blue-gray-300,
+		dark: tokens.$blue-gray-700,
 	),
 );
 
 html {
-	@include provider.theme($theme-map, 250ms, tokens.$ease-out);
+	@include provider.theme($theme-map, 300ms, tokens.$ease-out);
 }
