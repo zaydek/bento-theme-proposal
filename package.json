@@ -2,7 +2,7 @@
 	"name": "bento-theme-proposal",
 	"license": "MIT",
 	"scripts": {
-		"watch": "yarn watch --interval 0.1 'yarn sass --no-source-map src/consumer.scss public/out.css' src",
+		"watch-start": "yarn watch --interval 0.1 'yarn sass --no-source-map src/consumer.scss public/out.css' src",
 		"start": "sass --no-source-map src/consumer.scss src/out.css"
 	},
 	"devDependencies": {

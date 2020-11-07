@@ -1,16 +1,16 @@
 html {
-  --bg-body: #fafafa;
+  --bg-body: white;
   --bg-card: white;
-  --shadow-card: 0 0 0 1px rgba(0, 0, 0, 0.1), var(--shadow-md);
+  --shadow-card: 0 0 0 1px rgba(0, 0, 0, 0.1);
   --text-body: #27272a;
   --text-gray: #52525b;
-  --theme-transition: 300ms background-color cubic-bezier(0, 0, 0.2, 1), 300ms box-shadow cubic-bezier(0, 0, 0.2, 1), 300ms color cubic-bezier(0, 0, 0.2, 1);
+  --theme-transition: 250ms background-color cubic-bezier(0, 0, 0.2, 1), 250ms box-shadow cubic-bezier(0, 0, 0.2, 1), 250ms color cubic-bezier(0, 0, 0.2, 1);
 }
 
 [data-theme=dark] {
   --bg-body: #18181b;
-  --bg-card: #18181b;
-  --shadow-card: 0 0 0 1px rgba(255, 255, 255, 0.1);
+  --bg-card: #27272a;
+  --shadow-card: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
   --text-body: #d4d4d8;
   --text-gray: #a1a1aa;
 }

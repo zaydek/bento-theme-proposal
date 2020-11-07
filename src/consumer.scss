@@ -4,19 +4,19 @@
 $theme-map: (
 	--bg-body: (
 		property: background-color,
-		light: tokens.$gray-50,
+		light: tokens.$white,
 		dark: tokens.$gray-900,
 	),
 	--bg-card: (
 		property: background-color,
 		light: tokens.$white,
-		dark: tokens.$gray-900,
+		dark: tokens.$gray-800,
 	),
 	--shadow-card: (
 		// prettier-ignore
 		property: box-shadow,
-		light: (0 0 0 1px hsla(0, 0%, 0%, 0.1), var(--shadow-md)),
-		dark: 0 0 0 1px hsla(0, 0%, 100%, 0.1),
+		light: 0 0 0 1px hsla(0, 0%, 0%, 0.1),
+		dark: inset 0 0 0 1px hsla(0, 0%, 100%, 0.1),
 	),
 	--text-body: (
 		property: color,
@@ -31,5 +31,5 @@ $theme-map: (
 );
 
 html {
-	@include provider.theme($theme-map, 300ms, tokens.$ease-out);
+	@include provider.theme($theme-map, 250ms, tokens.$ease-out);
 }

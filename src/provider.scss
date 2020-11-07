@@ -113,10 +113,7 @@
 			}
 		}
 		@each $k1, $v1 in $theme-map {
-			// $amp: get-dynamic-ampersand();
-			// #{$amp}#{str-slice($k1, str-length("--") + 1)} {
 			.#{str-slice($k1, str-length("--") + 1)} {
-				// #{string.slice($k1, string.length("--") + 1)}: var(#{$k1});
 				#{map.get($v1, "property")}: var(#{$k1});
 				@if $duration != null and $timing-function != null {
 					transition: var(--theme-transition);
