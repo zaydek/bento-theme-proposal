@@ -15,27 +15,27 @@ html {
   --text-gray: #a1a1aa;
 }
 
-.bg-body {
+.theme\:bg-body {
   background-color: var(--bg-body);
   transition: var(--theme-transition);
 }
 
-.bg-card {
+.theme\:bg-card {
   background-color: var(--bg-card);
   transition: var(--theme-transition);
 }
 
-.shadow-card {
+.theme\:shadow-card {
   box-shadow: var(--shadow-card);
   transition: var(--theme-transition);
 }
 
-.text-body {
+.theme\:text-body {
   color: var(--text-body);
   transition: var(--theme-transition);
 }
 
-.text-gray {
+.theme\:text-gray {
   color: var(--text-gray);
   transition: var(--theme-transition);
 }

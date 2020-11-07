@@ -3,7 +3,7 @@
 	"license": "MIT",
 	"scripts": {
 		"watch-start": "yarn watch --interval 0.1 'yarn sass --no-source-map src/consumer.scss public/out.css' src",
-		"start": "sass --no-source-map src/consumer.scss src/out.css"
+		"start": "sass --no-source-map src/consumer.scss public/out.css"
 	},
 	"devDependencies": {
 		"sass": "^1.29.0",

@@ -113,7 +113,7 @@
 			}
 		}
 		@each $k1, $v1 in $theme-map {
-			.#{str-slice($k1, str-length("--") + 1)} {
+			.theme\:#{str-slice($k1, str-length("--") + 1)} {
 				#{map.get($v1, "property")}: var(#{$k1});
 				@if $duration != null and $timing-function != null {
 					transition: var(--theme-transition);
@@ -122,3 +122,8 @@
 		}
 	}
 }
+
+// @if $duration != null and $timing-function != null {
+// 	// transition: var(--theme-transition);
+// 	transition: #{$duration} #{map.get($v1, "property")} #{$timing-function};
+// }

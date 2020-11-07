@@ -1,6 +1,7 @@
 @use "provider";
 @use "tokens";
 
+// TODO: Add support for pseudo elements? What about group elements?
 $theme-map: (
 	--bg-body: (
 		property: background-color,
