@@ -1,90 +1,14 @@
 @use "sass:list";
 @use "sass:map";
+@use "sass:meta";
+@use "sass:string";
 
-// @mixin theme($theme-map-partials...) {
-// 	$theme-map: ();
-// 	@each $m in $theme-map-partials {
-// 		$theme-map: map-merge($theme-map, $m);
-// 	}
-//
-// 	$themes: ();
-// 	@each $k1, $v1 in $theme-map {
-// 		@each $k2, $v2 in $v1 {
-// 			@each $k3, $v3 in $v2 {
-// 				@if $k3 != "light" and not index($themes, $k3) {
-// 					$themes: join($themes, $k3);
-// 				}
-// 			}
-// 		}
-// 	}
-//
-// 	@at-root {
-// 		html {
-// 			@each $k1, $v1 in $theme-map {
-// 				@each $k2, $v2 in $v1 {
-// 					$got: #{map.get($v2, "light")};
-// 					@if $got {
-// 						#{$k1}-#{$k2}: #{$got};
-// 					}
-// 				}
-// 			}
-// 		}
-// 		@each $theme in $themes {
-// 			[data-theme="#{$theme}"] {
-// 				@each $k1, $v1 in $theme-map {
-// 					@each $k2, $v2 in $v1 {
-// 						$got: #{map.get($v2, $theme)};
-// 						@if $got {
-// 							#{$k1}-#{$k2}: #{$got};
-// 						}
-// 					}
-// 				}
-// 			}
-// 		}
-// 		@each $k1, $v1 in $theme-map {
-// 			$amp: if(not & or "" + & == ":root" or "" + & == "html" or "" + & == "body", ".", & + "-");
-// 			#{$amp}#{str-slice($k1, str-length("--") + 1)} {
-// 				@each $k2, $v2 in $v1 {
-// 					#{$k2}: var(#{$k1}-#{$k2});
-// 				}
-// 				@content;
-// 			}
-// 		}
-// 	}
-// }
-
-// $separator: ":";
-//
-// @function get-dynamic-ampersand() {
-// 	@if not & {
-// 		@return ".";
-// 	}
-// 	@return & + $separator;
-// }
-
-// $transition: list.append($transition, ($duration map.get($v1, "property") $timing-function), comma);
-@mixin theme($theme-map, $duration: null, $timing-function: null) {
-	// TODO: Sort?
-	$properties: ();
-	@if $duration != null and $timing-function != null {
-		@each $k1, $v1 in $theme-map {
-			@if not list.index($properties, map.get($v1, "property")) {
-				$properties: list.append($properties, map.get($v1, "property"), comma);
-			}
-		}
-	}
-
-	$transition: ();
-	@each $v in $properties {
-		$transition: list.append($transition, $duration $v $timing-function, comma);
-	}
-
+@mixin theme($theme-map) {
 	$themes: ();
 	@each $k1, $v1 in $theme-map {
 		@each $k2, $v2 in $v1 {
-			// Step over `property` and `light`:
-			@if $k2 != "property" and $k2 != "light" and not index($themes, $k2) {
-				$themes: join($themes, $k2);
+			@if $k2 != "property" and $k2 != "light" and not list.index($themes, $k2) {
+				$themes: list.append($themes, $k2);
 			}
 		}
 	}
@@ -97,14 +21,8 @@
 					#{$k1}: #{$got};
 				}
 			}
-			--transition: #{$transition};
-			// --theme-transition-duration: #{$duration};
+			@content;
 		}
-		// [data-theme-effect] *,
-		// [data-theme-effect] *::before,
-		// [data-theme-effect] *::after {
-		// 	--transition: #{$transition} !important;
-		// }
 		@each $theme in $themes {
 			body[data-theme="#{$theme}"] {
 				@each $k1, $v1 in $theme-map {
@@ -116,21 +34,18 @@
 			}
 		}
 		@each $k1, $v1 in $theme-map {
-			.#{str-slice($k1, str-length("--") + 1)} {
+			.#{string.slice($k1, string.length("--") + 1)} {
 				#{map.get($v1, "property")}: var(#{$k1});
-				@if $duration != null and $timing-function != null {
+				@if meta.content-exists() {
 					transition: var(--transition);
 				}
 			}
 			/* Pseudo */
-			.hover\:#{str-slice($k1, str-length("--") + 1)}:hover,
-			.focus\:#{str-slice($k1, str-length("--") + 1)}:focus,
-			.group:hover .group-hover\:#{str-slice($k1, str-length("--") + 1)},
-			.group:focus .group-focus\:#{str-slice($k1, str-length("--") + 1)} {
+			.hover\:#{string.slice($k1, string.length("--") + 1)}:hover,
+			.focus\:#{string.slice($k1, string.length("--") + 1)}:focus,
+			.group:hover .group-hover\:#{string.slice($k1, string.length("--") + 1)},
+			.group:focus .group-focus\:#{string.slice($k1, string.length("--") + 1)} {
 				#{map.get($v1, "property")}: var(#{$k1});
-				// @if $duration != null and $timing-function != null {
-				// 	transition: var(--theme-transition);
-				// }
 			}
 		}
 	}
