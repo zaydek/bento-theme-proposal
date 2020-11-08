@@ -1,27 +1,80 @@
-html {
-  --bg-body: white;
-  --bg-important: #94a3b8;
-  --bg-less-important: #cbd5e1;
-  --theme-transition: 300ms background-color cubic-bezier(0, 0, 0.2, 1);
+body {
+	--bg-body: white;
+	--bg-more-important: #f87171;
+	--bg-important: #fca5a5;
+	--bg-less-important: #cbd5e1;
+	--transition: 300ms background-color cubic-bezier(0, 0, 0.2, 1);
 }
 
-[data-theme=dark] {
-  --bg-body: #0f172a;
-  --bg-important: #475569;
-  --bg-less-important: #334155;
+body[data-theme="dark"] {
+	--bg-body: #0f172a;
+	--bg-more-important: #2563eb;
+	--bg-important: #1d4ed8;
+	--bg-less-important: #334155;
 }
 
-.theme\:bg-body {
-  background-color: var(--bg-body);
-  transition: var(--theme-transition);
+.bg-body {
+	background-color: var(--bg-body);
+	transition: var(--transition);
 }
 
-.theme\:bg-important {
-  background-color: var(--bg-important);
-  transition: var(--theme-transition);
+/* Pseudo */
+.hover\:bg-body:hover,
+.focus\:bg-body:focus,
+.group:hover .group-hover\:bg-body,
+.group:focus .group-focus\:bg-body {
+	background-color: var(--bg-body);
 }
 
-.theme\:bg-less-important {
-  background-color: var(--bg-less-important);
-  transition: var(--theme-transition);
+.bg-more-important {
+	background-color: var(--bg-more-important);
+	transition: var(--transition);
+}
+
+/* Pseudo */
+.hover\:bg-more-important:hover,
+.focus\:bg-more-important:focus,
+.group:hover .group-hover\:bg-more-important,
+.group:focus .group-focus\:bg-more-important {
+	background-color: var(--bg-more-important);
+}
+
+.bg-important {
+	background-color: var(--bg-important);
+	transition: var(--transition);
+}
+
+/* Pseudo */
+.hover\:bg-important:hover,
+.focus\:bg-important:focus,
+.group:hover .group-hover\:bg-important,
+.group:focus .group-focus\:bg-important {
+	background-color: var(--bg-important);
+}
+
+.bg-less-important {
+	background-color: var(--bg-less-important);
+	transition: var(--transition);
+}
+
+/* Pseudo */
+.hover\:bg-less-important:hover,
+.focus\:bg-less-important:focus,
+.group:hover .group-hover\:bg-less-important,
+.group:focus .group-focus\:bg-less-important {
+	background-color: var(--bg-less-important);
+}
+
+body:not([data-theme-mount="true"]) .transition {
+	transition-property: fill, color, background-color, border-color, box-shadow;
+	transition-duration: var(--transition-duration);
+	transition-timing-function: var(--transition-timing-function);
+}
+
+body:not([data-theme-mount="true"]) .duration-75 {
+	--transition-duration: 1s;
+}
+
+body:not([data-theme-mount="true"]) .ease-out {
+	--transition-timing-function: ease-out;
 }

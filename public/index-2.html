@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="https://unpkg.com/@zaydek/sorcery@0.4.x" />
+		<link rel="stylesheet" href="./out.css" />
+	</head>
+	<body class="macos-retina">
+		<div class="hstack stack-center h-screen">
+			<div class="hstack stack-center px-16 py-8 theme:bg-button rounded-8" style="min-width: 144px">
+				<div class="font-500 text-17 text-white">Button</div>
+			</div>
+		</div>
+		<script>
+			document.addEventListener("keydown", e => {
+				if (e.ctrlKey && e.key.toLowerCase() === "d") {
+					const hasAttribute = document.body.hasAttribute("data-debug")
+					if (!hasAttribute) {
+						document.body.setAttribute("data-debug", "true")
+					} else {
+						document.body.removeAttribute("data-debug")
+					}
+				} else if (!e.ctrlKey && e.key.toLowerCase() === "d") {
+					const hasAttribute = document.body.hasAttribute("data-theme")
+					if (!hasAttribute) {
+						document.body.setAttribute("data-theme", "dark")
+					} else {
+						document.body.removeAttribute("data-theme")
+					}
+					document.body.setAttribute("data-theme-progress", "true")
+					window.requestAnimationFrame(() => {
+						document.body.removeAttribute("data-theme-progress", "true")
+					})
+				}
+			})
+		</script>
+	</body>
+</html>

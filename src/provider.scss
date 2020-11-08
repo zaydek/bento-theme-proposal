@@ -69,7 +69,7 @@
 	@if $duration != null and $timing-function != null {
 		@each $k1, $v1 in $theme-map {
 			@if not list.index($properties, map.get($v1, "property")) {
-				$properties: list.append($properties, map.get($v1, "property"));
+				$properties: list.append($properties, map.get($v1, "property"), comma);
 			}
 		}
 	}
@@ -90,20 +90,23 @@
 	}
 
 	@at-root {
-		& {
+		body {
 			@each $k1, $v1 in $theme-map {
 				$got: #{map.get($v1, "light")};
 				@if $got {
 					#{$k1}: #{$got};
 				}
 			}
-
-			@if $duration != null and $timing-function != null {
-				--theme-transition: #{$transition};
-			}
+			--transition: #{$transition};
+			// --theme-transition-duration: #{$duration};
 		}
+		// [data-theme-effect] *,
+		// [data-theme-effect] *::before,
+		// [data-theme-effect] *::after {
+		// 	--transition: #{$transition} !important;
+		// }
 		@each $theme in $themes {
-			[data-theme="#{$theme}"] {
+			body[data-theme="#{$theme}"] {
 				@each $k1, $v1 in $theme-map {
 					$got: #{map.get($v1, $theme)};
 					@if $got {
@@ -113,17 +116,22 @@
 			}
 		}
 		@each $k1, $v1 in $theme-map {
-			.theme\:#{str-slice($k1, str-length("--") + 1)} {
+			.#{str-slice($k1, str-length("--") + 1)} {
 				#{map.get($v1, "property")}: var(#{$k1});
 				@if $duration != null and $timing-function != null {
-					transition: var(--theme-transition);
+					transition: var(--transition);
 				}
+			}
+			/* Pseudo */
+			.hover\:#{str-slice($k1, str-length("--") + 1)}:hover,
+			.focus\:#{str-slice($k1, str-length("--") + 1)}:focus,
+			.group:hover .group-hover\:#{str-slice($k1, str-length("--") + 1)},
+			.group:focus .group-focus\:#{str-slice($k1, str-length("--") + 1)} {
+				#{map.get($v1, "property")}: var(#{$k1});
+				// @if $duration != null and $timing-function != null {
+				// 	transition: var(--theme-transition);
+				// }
 			}
 		}
 	}
 }
-
-// @if $duration != null and $timing-function != null {
-// 	// transition: var(--theme-transition);
-// 	transition: #{$duration} #{map.get($v1, "property")} #{$timing-function};
-// }

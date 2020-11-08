@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="https://unpkg.com/@zaydek/sorcery@0.4.x" />
+		<link rel="stylesheet" href="./out.css" />
+		<style>
+			.grid-custom {
+				display: grid;
+				grid-template-columns: 1fr 112px 80px 48px minmax(0, 640px) 48px 192px 1fr;
+				grid-template-areas: ". . lhs . content . rhs .";
+			}
+			.grid-custom > *:nth-child(1) {
+				grid-area: lhs;
+			}
+			.grid-custom > *:nth-child(2) {
+				grid-area: content;
+			}
+			.grid-custom > *:nth-child(3) {
+				grid-area: rhs;
+			}
+		</style>
+	</head>
+	<body class="macos-retina bg-body">
+		<div class="vstack space-96">
+			<div class="bg-more-important" style="height: 288px"></div>
+			<div class="vstack space-64">
+				<div class="grid-custom px-16 sm:px-24">
+					<div class="w-80 h-80 bg-more-important rounded-full"></div>
+					<div class="vstack space-24">
+						<!-- TODO: Change from `space-64` to `space-16`. -->
+						<div class="hstack stack-center space-64">
+							<div class="spacer vstack space-12" data-stagger>
+								<div class="h-24 bg-more-important rounded-full"></div>
+								<div class="h-16 bg-less-important rounded-full"></div>
+								<div class="h-16 bg-less-important rounded-full"></div>
+							</div>
+							<div class="hstack space-16">
+								<div
+									class="w-32 h-32 bg-important hover:bg-more-important rounded-full transition duration-75 ease-out"
+								></div>
+								<div
+									class="w-32 h-32 bg-important hover:bg-more-important rounded-full transition duration-75 ease-out"
+								></div>
+								<div
+									class="w-32 h-32 bg-important hover:bg-more-important rounded-full transition duration-75 ease-out"
+								></div>
+							</div>
+						</div>
+						<div class="hstack space-16">
+							<div
+								class="w-128 h-32 bg-important hover:bg-more-important rounded-full transition duration-75 ease-out"
+							></div>
+							<div
+								class="w-128 h-32 bg-important hover:bg-more-important rounded-full transition duration-75 ease-out"
+							></div>
+							<div class="spacer"></div>
+						</div>
+					</div>
+					<div></div>
+				</div>
+				<div class="grid-custom px-16 sm:px-24 pb-96">
+					<div></div>
+					<div class="vstack space-32">
+						<div class="vstack space-12" data-stagger>
+							<div class="h-32 bg-more-important rounded-full"></div>
+							<div class="h-24 bg-less-important rounded-full"></div>
+						</div>
+						<div class="vstack space-12" data-stagger>
+							<div class="h-16 bg-less-important rounded-full"></div>
+							<div class="h-16 bg-less-important rounded-full"></div>
+							<div class="h-16 bg-less-important rounded-full"></div>
+							<div class="h-16 bg-less-important rounded-full"></div>
+							<div class="h-16 bg-less-important rounded-full"></div>
+							<div class="h-16 bg-less-important rounded-full"></div>
+						</div>
+						<div class="vstack space-12" data-stagger>
+							<div class="h-16 bg-less-important rounded-full"></div>
+							<div class="h-16 bg-less-important rounded-full"></div>
+							<div class="h-16 bg-less-important rounded-full"></div>
+							<div class="h-16 bg-less-important rounded-full"></div>
+							<div class="h-16 bg-less-important rounded-full"></div>
+							<div class="h-16 bg-less-important rounded-full"></div>
+						</div>
+						<div class="vstack space-12" data-stagger>
+							<div class="h-16 bg-less-important rounded-full"></div>
+							<div class="h-16 bg-less-important rounded-full"></div>
+							<div class="h-16 bg-less-important rounded-full"></div>
+							<div class="h-16 bg-less-important rounded-full"></div>
+							<div class="h-16 bg-less-important rounded-full"></div>
+							<div class="h-16 bg-less-important rounded-full"></div>
+						</div>
+						<div class="vstack space-12" data-stagger>
+							<div class="h-16 bg-less-important rounded-full"></div>
+							<div class="h-16 bg-less-important rounded-full"></div>
+							<div class="h-16 bg-less-important rounded-full"></div>
+							<div class="h-16 bg-less-important rounded-full"></div>
+							<div class="h-16 bg-less-important rounded-full"></div>
+							<div class="h-16 bg-less-important rounded-full"></div>
+						</div>
+						<div class="spacer"></div>
+					</div>
+					<div class="vstack space-10" data-stagger>
+						<div class="h-10 bg-important rounded-full"></div>
+						<div class="h-10 bg-important rounded-full"></div>
+						<div class="h-10 bg-important rounded-full"></div>
+						<div class="h-10 bg-important rounded-full"></div>
+						<div class="h-10 bg-important rounded-full"></div>
+						<div class="h-10 bg-important rounded-full"></div>
+						<div class="spacer"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			document.addEventListener("keydown", e => {
+				if (e.ctrlKey && e.key.toLowerCase() === "d") {
+					const hasAttribute = document.body.hasAttribute("data-debug")
+					if (!hasAttribute) {
+						document.body.setAttribute("data-debug", "true")
+					} else {
+						document.body.removeAttribute("data-debug")
+					}
+				}
+
+				if (!e.ctrlKey && e.key.toLowerCase() === "d") {
+					document.body.setAttribute("data-theme-mount", "true")
+					setTimeout(() => {
+						const hasAttribute = document.body.hasAttribute("data-theme")
+						if (!hasAttribute) {
+							document.body.setAttribute("data-theme", "dark")
+						} else {
+							document.body.removeAttribute("data-theme")
+						}
+						setTimeout(() => {
+							document.body.removeAttribute("data-theme-mount")
+						}, 300)
+					}, 50)
+				}
+			})
+		</script>
+	</body>
+</html>

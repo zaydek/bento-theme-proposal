@@ -9,10 +9,15 @@ $theme-map: (
 		light: tokens.$white,
 		dark: tokens.$blue-gray-900,
 	),
+	--bg-more-important: (
+		property: background-color,
+		light: tokens.$red-400,
+		dark: tokens.$blue-600,
+	),
 	--bg-important: (
 		property: background-color,
-		light: tokens.$blue-gray-400,
-		dark: tokens.$blue-gray-600,
+		light: tokens.$red-300,
+		dark: tokens.$blue-700,
 	),
 	--bg-less-important: (
 		property: background-color,
@@ -22,5 +27,18 @@ $theme-map: (
 );
 
 html {
+	// TODO: Internalize `$duration` and `$timing-function`?
 	@include provider.theme($theme-map, 300ms, tokens.$ease-out);
+}
+
+body:not([data-theme-mount="true"]) .transition {
+	transition-property: fill /* <svg> */, color, background-color, border-color, box-shadow;
+	transition-duration: var(--transition-duration);
+	transition-timing-function: var(--transition-timing-function);
+}
+body:not([data-theme-mount="true"]) .duration-75 {
+	--transition-duration: 1s;
+}
+body:not([data-theme-mount="true"]) .ease-out {
+	--transition-timing-function: ease-out;
 }
