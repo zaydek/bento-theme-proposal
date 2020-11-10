@@ -1,5 +1,5 @@
 {
-	"name": "bento-theme-proposal",
+	"name": "duomo-theme-proposal",
 	"license": "MIT",
 	"scripts": {
 		"watch-start": "yarn watch --interval 0.1 'yarn sass --no-source-map src/consumer.scss public/out.css' src",
