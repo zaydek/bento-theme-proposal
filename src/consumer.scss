@@ -1,11 +1,44 @@
 @use "provider";
 @use "tokens";
 
+$theme-aware-selector: "body:not([data-theme-mount=true])";
+
+#{$theme-aware-selector} {
+	.transition {
+		--transition-duration: 300ms;
+		--transition-timing-function: #{tokens.$ease-out};
+		transition: var(--transition-duration) var(--transition-timing-function);
+		transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+	}
+	@each $v in (0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000) {
+		.duration-#{$v} {
+			--transition-duration: #{$v + ms};
+		}
+	}
+	.ease-linear {
+		--transition-timing-function: #{tokens.$ease-linear};
+	}
+	.ease-in {
+		--transition-timing-function: #{tokens.$ease-in};
+	}
+	.ease-out {
+		--transition-timing-function: #{tokens.$ease-out};
+	}
+	.ease-in-out {
+		--transition-timing-function: #{tokens.$ease-in-out};
+	}
+}
+
 $theme-map: (
 	--bg-body: (
 		property: background-color,
 		light: tokens.$white,
 		dark: tokens.$blue-gray-900,
+	),
+	--bg-most-important: (
+		property: background-color,
+		light: tokens.$red-500,
+		dark: tokens.$blue-500,
 	),
 	--bg-more-important: (
 		property: background-color,
@@ -24,20 +57,12 @@ $theme-map: (
 	),
 );
 
-html {
-	@include provider.theme($theme-map) {
-		--transition: 300ms background-color cubic-bezier(0, 0, 0.2, 1);
-	}
+body {
+	@include provider.theme($theme-map, 400ms, tokens.$ease-out);
 }
 
-body:not([data-theme-mount="true"]) .transition {
-	transition-property: color, fill /* <svg> */, background-color, border-color, box-shadow;
-	transition-duration: var(--transition-duration);
-	transition-timing-function: var(--transition-timing-function);
-}
-body:not([data-theme-mount="true"]) .duration-75 {
-	--transition-duration: 75ms;
-}
-body:not([data-theme-mount="true"]) .ease-out {
-	--transition-timing-function: ease-out;
+#{$theme-aware-selector} {
+	.duration-button {
+		--transition-duration: 200ms;
+	}
 }
