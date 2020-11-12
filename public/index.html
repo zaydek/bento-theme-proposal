@@ -37,25 +37,17 @@
 								<div class="h-16 bg-less-important rounded-full"></div>
 								<div class="h-16 bg-less-important rounded-full"></div>
 							</div>
+							<!-- prettier-ignore -->
 							<div class="hstack space-16">
-								<div
-									class="w-32 h-32 bg-important hover:bg-more-important rounded-full transition duration-75 ease-out"
-								></div>
-								<div
-									class="w-32 h-32 bg-important hover:bg-more-important rounded-full transition duration-75 ease-out"
-								></div>
-								<div
-									class="w-32 h-32 bg-important hover:bg-more-important rounded-full transition duration-75 ease-out"
-								></div>
+								<button class="w-32 h-32 bg-important touch:bg-more-important press:bg-most-important rounded-full transition duration-button"></button>
+								<button class="w-32 h-32 bg-important touch:bg-more-important press:bg-most-important rounded-full transition duration-button"></button>
+								<button class="w-32 h-32 bg-important touch:bg-more-important press:bg-most-important rounded-full transition duration-button"></button>
 							</div>
 						</div>
+						<!-- prettier-ignore -->
 						<div class="hstack space-16">
-							<div
-								class="w-128 h-32 bg-important hover:bg-more-important rounded-full transition duration-75 ease-out"
-							></div>
-							<div
-								class="w-128 h-32 bg-important hover:bg-more-important rounded-full transition duration-75 ease-out"
-							></div>
+							<button class="w-128 h-32 bg-important touch:bg-more-important press:bg-most-important rounded-full transition duration-button"></button>
+							<button class="w-128 h-32 bg-important touch:bg-more-important press:bg-most-important rounded-full transition duration-button"></button>
 							<div class="spacer"></div>
 						</div>
 					</div>
@@ -115,6 +107,11 @@
 			</div>
 		</div>
 		<script>
+			document.querySelectorAll("button").forEach(each => {
+				each.addEventListener("pointerdown", e => {
+					e.preventDefault()
+				})
+			})
 			document.addEventListener("keydown", e => {
 				if (e.ctrlKey && e.key.toLowerCase() === "d") {
 					const hasAttribute = document.body.hasAttribute("data-debug")
@@ -124,7 +121,6 @@
 						document.body.removeAttribute("data-debug")
 					}
 				}
-
 				if (!e.ctrlKey && e.key.toLowerCase() === "d") {
 					document.body.setAttribute("data-theme-mount", "true")
 					setTimeout(() => {

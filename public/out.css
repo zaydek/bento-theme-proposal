@@ -1,80 +1,166 @@
+body:not([data-theme-mount=true]) .transition {
+  --transition-duration: 300ms;
+  --transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  transition: var(--transition-duration) var(--transition-timing-function);
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+}
+body:not([data-theme-mount=true]) .duration-0 {
+  --transition-duration: 0ms;
+}
+body:not([data-theme-mount=true]) .duration-100 {
+  --transition-duration: 100ms;
+}
+body:not([data-theme-mount=true]) .duration-200 {
+  --transition-duration: 200ms;
+}
+body:not([data-theme-mount=true]) .duration-300 {
+  --transition-duration: 300ms;
+}
+body:not([data-theme-mount=true]) .duration-400 {
+  --transition-duration: 400ms;
+}
+body:not([data-theme-mount=true]) .duration-500 {
+  --transition-duration: 500ms;
+}
+body:not([data-theme-mount=true]) .duration-600 {
+  --transition-duration: 600ms;
+}
+body:not([data-theme-mount=true]) .duration-700 {
+  --transition-duration: 700ms;
+}
+body:not([data-theme-mount=true]) .duration-800 {
+  --transition-duration: 800ms;
+}
+body:not([data-theme-mount=true]) .duration-900 {
+  --transition-duration: 900ms;
+}
+body:not([data-theme-mount=true]) .duration-1000 {
+  --transition-duration: 1000ms;
+}
+body:not([data-theme-mount=true]) .ease-linear {
+  --transition-timing-function: linear;
+}
+body:not([data-theme-mount=true]) .ease-in {
+  --transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+}
+body:not([data-theme-mount=true]) .ease-out {
+  --transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+body:not([data-theme-mount=true]) .ease-in-out {
+  --transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 body {
   --bg-body: white;
+  --bg-most-important: #ef4444;
   --bg-more-important: #f87171;
   --bg-important: #fca5a5;
   --bg-less-important: #cbd5e1;
-  --transition: 300ms background-color cubic-bezier(0, 0, 0.2, 1);
+  --theme-transition: background-color 400ms cubic-bezier(0, 0, 0.2, 1), border-color 400ms cubic-bezier(0, 0, 0.2, 1), box-shadow 400ms cubic-bezier(0, 0, 0.2, 1), color 400ms cubic-bezier(0, 0, 0.2, 1), fill 400ms cubic-bezier(0, 0, 0.2, 1), opacity 400ms cubic-bezier(0, 0, 0.2, 1), stroke 400ms cubic-bezier(0, 0, 0.2, 1), transform 400ms cubic-bezier(0, 0, 0.2, 1);
 }
 
 body[data-theme=dark] {
   --bg-body: #0f172a;
+  --bg-most-important: #3b82f6;
   --bg-more-important: #2563eb;
   --bg-important: #1d4ed8;
   --bg-less-important: #334155;
 }
 
+/*
+ * Normal variants (theme transition-ready)
+ */
 .bg-body {
   background-color: var(--bg-body);
-  transition: var(--transition);
+  transition: var(--theme-transition);
 }
 
-/* Pseudo */
-.hover\:bg-body:hover,
-.focus\:bg-body:focus,
-.group:hover .group-hover\:bg-body,
-.group:focus .group-focus\:bg-body {
-  background-color: var(--bg-body);
+.bg-most-important {
+  background-color: var(--bg-most-important);
+  transition: var(--theme-transition);
 }
 
 .bg-more-important {
   background-color: var(--bg-more-important);
-  transition: var(--transition);
-}
-
-/* Pseudo */
-.hover\:bg-more-important:hover,
-.focus\:bg-more-important:focus,
-.group:hover .group-hover\:bg-more-important,
-.group:focus .group-focus\:bg-more-important {
-  background-color: var(--bg-more-important);
+  transition: var(--theme-transition);
 }
 
 .bg-important {
   background-color: var(--bg-important);
-  transition: var(--transition);
-}
-
-/* Pseudo */
-.hover\:bg-important:hover,
-.focus\:bg-important:focus,
-.group:hover .group-hover\:bg-important,
-.group:focus .group-focus\:bg-important {
-  background-color: var(--bg-important);
+  transition: var(--theme-transition);
 }
 
 .bg-less-important {
   background-color: var(--bg-less-important);
-  transition: var(--transition);
+  transition: var(--theme-transition);
 }
 
-/* Pseudo */
-.hover\:bg-less-important:hover,
-.focus\:bg-less-important:focus,
-.group:hover .group-hover\:bg-less-important,
-.group:focus .group-focus\:bg-less-important {
+/*
+ * Touch variants (:hover, :focus)
+ */
+.touch\:bg-body:hover,
+.touch\:bg-body:focus,
+.group:hover .touch\:bg-body,
+.group:focus .touch\:bg-body {
+  background-color: var(--bg-body);
+}
+
+.touch\:bg-most-important:hover,
+.touch\:bg-most-important:focus,
+.group:hover .touch\:bg-most-important,
+.group:focus .touch\:bg-most-important {
+  background-color: var(--bg-most-important);
+}
+
+.touch\:bg-more-important:hover,
+.touch\:bg-more-important:focus,
+.group:hover .touch\:bg-more-important,
+.group:focus .touch\:bg-more-important {
+  background-color: var(--bg-more-important);
+}
+
+.touch\:bg-important:hover,
+.touch\:bg-important:focus,
+.group:hover .touch\:bg-important,
+.group:focus .touch\:bg-important {
+  background-color: var(--bg-important);
+}
+
+.touch\:bg-less-important:hover,
+.touch\:bg-less-important:focus,
+.group:hover .touch\:bg-less-important,
+.group:focus .touch\:bg-less-important {
   background-color: var(--bg-less-important);
 }
 
-body:not([data-theme-mount=true]) .transition {
-  transition-property: color, fill, background-color, border-color, box-shadow;
-  transition-duration: var(--transition-duration);
-  transition-timing-function: var(--transition-timing-function);
+/*
+ * Press variants (:active)
+ */
+.press\:bg-body:active,
+.group:active .press\:bg-body {
+  background-color: var(--bg-body);
 }
 
-body:not([data-theme-mount=true]) .duration-75 {
-  --transition-duration: 75ms;
+.press\:bg-most-important:active,
+.group:active .press\:bg-most-important {
+  background-color: var(--bg-most-important);
 }
 
-body:not([data-theme-mount=true]) .ease-out {
-  --transition-timing-function: ease-out;
+.press\:bg-more-important:active,
+.group:active .press\:bg-more-important {
+  background-color: var(--bg-more-important);
+}
+
+.press\:bg-important:active,
+.group:active .press\:bg-important {
+  background-color: var(--bg-important);
+}
+
+.press\:bg-less-important:active,
+.group:active .press\:bg-less-important {
+  background-color: var(--bg-less-important);
+}
+
+body:not([data-theme-mount=true]) .duration-button {
+  --transition-duration: 200ms;
 }
