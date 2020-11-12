@@ -67,9 +67,6 @@ body[data-theme=dark] {
   --bg-less-important: #334155;
 }
 
-/*
- * Normal (theme transition-ready)
- */
 .bg-body {
   background-color: var(--bg-body);
   transition: var(--theme-transition);
@@ -95,69 +92,63 @@ body[data-theme=dark] {
   transition: var(--theme-transition);
 }
 
-/*
- * Touch variants (:hover, :focus)
- */
 .touch\:bg-body:hover,
 .touch\:bg-body:focus,
-.group:hover .touch\:bg-body,
-.group:focus .touch\:bg-body {
+.group:hover .group-touch\:bg-body,
+.group:focus .group-touch\:bg-body {
   background-color: var(--bg-body);
 }
 
 .touch\:bg-most-important:hover,
 .touch\:bg-most-important:focus,
-.group:hover .touch\:bg-most-important,
-.group:focus .touch\:bg-most-important {
+.group:hover .group-touch\:bg-most-important,
+.group:focus .group-touch\:bg-most-important {
   background-color: var(--bg-most-important);
 }
 
 .touch\:bg-more-important:hover,
 .touch\:bg-more-important:focus,
-.group:hover .touch\:bg-more-important,
-.group:focus .touch\:bg-more-important {
+.group:hover .group-touch\:bg-more-important,
+.group:focus .group-touch\:bg-more-important {
   background-color: var(--bg-more-important);
 }
 
 .touch\:bg-important:hover,
 .touch\:bg-important:focus,
-.group:hover .touch\:bg-important,
-.group:focus .touch\:bg-important {
+.group:hover .group-touch\:bg-important,
+.group:focus .group-touch\:bg-important {
   background-color: var(--bg-important);
 }
 
 .touch\:bg-less-important:hover,
 .touch\:bg-less-important:focus,
-.group:hover .touch\:bg-less-important,
-.group:focus .touch\:bg-less-important {
+.group:hover .group-touch\:bg-less-important,
+.group:focus .group-touch\:bg-less-important {
   background-color: var(--bg-less-important);
 }
 
-/*
- * Press variants (:active)
- */
 .press\:bg-body:active,
-.group:active .press\:bg-body {
+.group:active .group-press\:bg-body {
   background-color: var(--bg-body);
 }
 
 .press\:bg-most-important:active,
-.group:active .press\:bg-most-important {
+.group:active .group-press\:bg-most-important {
   background-color: var(--bg-most-important);
 }
 
 .press\:bg-more-important:active,
-.group:active .press\:bg-more-important {
+.group:active .group-press\:bg-more-important {
   background-color: var(--bg-more-important);
 }
 
 .press\:bg-important:active,
-.group:active .press\:bg-important {
+.group:active .group-press\:bg-important {
   background-color: var(--bg-important);
 }
 
 .press\:bg-less-important:active,
-.group:active .press\:bg-less-important {
+.group:active .group-press\:bg-less-important {
   background-color: var(--bg-less-important);
 }
 
