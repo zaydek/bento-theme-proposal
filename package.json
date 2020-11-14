@@ -2,8 +2,8 @@
 	"name": "duomo-theme-proposal",
 	"license": "MIT",
 	"scripts": {
-		"watch-start": "yarn watch --interval 0.1 'yarn sass --no-source-map src/consumer.scss public/out.css' src",
-		"start": "sass --no-source-map src/consumer.scss public/out.css"
+		"watch-build": "yarn watch --interval 0.1 'yarn sass --no-charset --no-source-map src/consumer.scss public/out.css' src",
+		"build": "sass --no-charset --no-source-map src/consumer.scss public/out.css"
 	},
 	"devDependencies": {
 		"sass": "^1.29.0",
