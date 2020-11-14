@@ -1,5 +1,5 @@
 {
-	"name": "duomo-theme-proposal",
+	"name": "duomo-theming-proposal",
 	"license": "MIT",
 	"scripts": {
 		"watch-build": "yarn watch --interval 0.1 'yarn sass --no-charset --no-source-map src/consumer.scss public/out.css' src",
